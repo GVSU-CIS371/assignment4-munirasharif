@@ -4,7 +4,7 @@
 
 <script setup lang="ts">
 import { computed } from "vue";
-import type { SyrupType } from "../stores/beverage";
+import type { SyrupType } from "../stores/beverageStore";
 
 type Props = {
   syrup: SyrupType;
