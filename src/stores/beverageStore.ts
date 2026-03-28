@@ -13,13 +13,31 @@ export const useBeverageStore = defineStore("BeverageStore", {
     creamers: creamers,
     currentCreamer: creamers[0],
     syrups: syrups,
-    currentSyrup: syrups[0]
-
+    currentSyrup: syrups[0],
+    name: "",
+    savedBeverages: [],
+    next: 0,
   }),
 
   actions: {
-    makeBeverage() {},
-    showBeverage() {},
+    makeBeverage() {
+      this.savedBeverages.push({
+        id: this.next,
+        name: this.name,
+        temp: this.currentTemp,
+        base: this.currentBase,
+        creamer: this.currentCreamer,
+        syrup: this.currentSyrup
+      });
+      this.next++;
+      this.name = "";
+    },
+    showBeverage(beverage) {
+      this.currentTemp = beverage.temp;
+      this.currentBase = beverage.base;
+      this.currentCreamer = beverage.creamer;
+      this.currentSyrup = beverage.syrup;
+    },
   },
   persist: true,
 });
